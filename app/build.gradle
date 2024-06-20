@@ -2,19 +2,6 @@ plugins {
     id 'com.android.application'
 }
 
-import java.nio.file.Files
-import java.nio.file.Paths
-
-// Load .env file
-def envFile = Paths.get('.env')
-def envProps = new Properties()
-if (Files.exists(envFile)) {
-    envProps.load(Files.newBufferedReader(envFile))
-    System.out.println("Loaded .env file")
-} else {
-    System.out.println("No .env file found")
-}
-
 android {
     namespace 'com.paulmueser.smartnav'
     compileSdk 34
