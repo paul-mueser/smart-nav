@@ -28,8 +28,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "CLIENT_ID", "\"${envProps['CLIENT_ID']}\""
-        buildConfigField "String", "CLIENT_SECRET", "\"${envProps['CLIENT_SECRET']}\""
+        buildConfigField "String", "CLIENT_ID", "\"${System.getenv("DB_CLIENT_ID")}\""
+        buildConfigField "String", "CLIENT_SECRET", "\"${System.getenv("DB_CLIENT_SECRET")}\""
     }
 
     buildFeatures {
