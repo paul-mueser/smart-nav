@@ -20,11 +20,12 @@ public class MainActivity extends AppCompatActivity {
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
+        request();
     }
 
     // TODO this is the way to call the request method
     private void request() {
-        ApiService.sendRequest(new IResponseReceived() {
+        ApiService.requestPlan(new IResponseReceived() {
             @Override
             public void onSuccess(String response) {
                 Log.i("SmartNav", response);
@@ -34,6 +35,6 @@ public class MainActivity extends AppCompatActivity {
             public void onError(String error) {
                 Log.e("SmartNav", error);
             }
-        });
+        }, "8000105", "240621", "22");
     }
 }

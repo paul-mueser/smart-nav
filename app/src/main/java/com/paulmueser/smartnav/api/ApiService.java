@@ -10,7 +10,19 @@ public class ApiService {
     public ApiService() {
     }
 
-    public static void sendRequest(IResponseReceived listener) {
+    public static void requestKnownChanges(IResponseReceived listener, String stationId) {
+        sendRequest(listener, "fchg/" + stationId);
+    }
+
+    public static void requestPlan(IResponseReceived listener, String stationId, String date, String time) {
+        sendRequest(listener, String.format("plan/%s/%s/%s", stationId, date, time));
+    }
+
+    public static void requestStation(IResponseReceived listener, String stationName) {
+        sendRequest(listener, "station/" + stationName);
+    }
+
+    private static void sendRequest(IResponseReceived listener, String url) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -20,7 +32,7 @@ public class ApiService {
 
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("https://apis.deutschebahn.com/db-api-marketplace/apis/timetables/v1/fchg/8000105")
+                            .url("https://apis.deutschebahn.com/db-api-marketplace/apis/timetables/v1/" + url)
                             .get()
                             .addHeader("DB-Client-Id", clientId)
                             .addHeader("DB-Api-Key", clientSecret)
@@ -31,7 +43,7 @@ public class ApiService {
                         String responseData = response.body().string();
                         listener.onSuccess(responseData);
                     } else {
-                        String errorResponse = response.body().string();
+                        String errorResponse = response.code() + " " + response.body().string();
                         listener.onError(errorResponse);
                     }
                 } catch (final Exception e) {
