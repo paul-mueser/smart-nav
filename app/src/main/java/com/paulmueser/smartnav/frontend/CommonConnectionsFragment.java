@@ -21,13 +21,6 @@ public class CommonConnectionsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static CommonConnectionsFragment newInstance() {
-        CommonConnectionsFragment fragment = new CommonConnectionsFragment();
-        Bundle                    args     = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +32,13 @@ public class CommonConnectionsFragment extends Fragment {
         CommonConnectionsBinding binding = CommonConnectionsBinding.inflate(inflater, container, false);
         View                     view    = binding.getRoot();
 
+        ArrayList<String> tmp = new ArrayList<>();
+        tmp.add("Connection 1");
+        tmp.add("Connection 2");
+
         recyclerViewCommonConnections = view.findViewById(R.id.list_common_connections);
         recyclerViewCommonConnections.setLayoutManager(new LinearLayoutManager(getContext()));
-        connectionAdapter = new ConnectionAdapter(new ArrayList<>());
+        connectionAdapter = new ConnectionAdapter(tmp);
         recyclerViewCommonConnections.setAdapter(connectionAdapter);
 
         return view;

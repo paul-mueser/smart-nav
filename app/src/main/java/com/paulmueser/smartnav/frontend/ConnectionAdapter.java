@@ -25,7 +25,7 @@ public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.Vi
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.connection_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_common_connection, parent, false);
         return new ViewHolder(view);
     }
 
@@ -46,7 +46,7 @@ public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return gameInfoList.size();
+        return connectionList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,8 +56,8 @@ public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.Vi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            // assigning views to their ids
-            title        = itemView.findViewById(R.id.item_name);
+
+            title = itemView.findViewById(R.id.txt_common_connection_title);
         }
     }
 }
