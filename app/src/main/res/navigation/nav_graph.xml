@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" app:startDestination="@id/commonConnections">
+
+    <fragment android:id="@+id/commonConnections"
+              android:name="com.paulmueser.smartnav.CommonConnections"
+              android:label="common_connections"
+              tools:layout="@layout/common_connections">
+        <action android:id="@+id/action_commonConnections_to_findConnection" app:destination="@id/findConnection"/>
+    </fragment>
+
+    <fragment android:id="@+id/findConnection"
+              android:name="com.paulmueser.smartnav.FindConnection"
+              android:label="find_connection"
+              tools:layout="@layout/find_connection">
+        <action android:id="@+id/action_findConnection_to_commonConnections" app:destination="@id/commonConnections"/>
+    </fragment>
+</navigation>
