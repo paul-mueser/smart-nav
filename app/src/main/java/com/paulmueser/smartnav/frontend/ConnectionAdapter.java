@@ -1,21 +1,25 @@
 package com.paulmueser.smartnav.frontend;
 
 import android.content.Context;
-import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.paulmueser.smartnav.R;
+import com.paulmueser.smartnav.api.ApiService;
+import com.paulmueser.smartnav.api.IResponseReceived;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.ViewHolder> {
-    private final        ArrayList<String> connectionList;
+    // TODO replace with connection class (create it)
+    private final ArrayList<String> connectionList;
 
     public ConnectionAdapter(ArrayList<String> list) {
         this.connectionList = list;
@@ -41,7 +45,29 @@ public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.Vi
     private static void RequestConnection(View view, String curConnection) {
         Context context = view.getContext();
 
-        // TODO logic to get the connection
+        // region Get current date and time
+        Date currentTime = Calendar.getInstance().getTime();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd", Locale.getDefault());
+        String date = dateFormat.format(currentTime);
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH", Locale.getDefault());
+        String hour = timeFormat.format(currentTime);
+        // endregion
+
+        ApiService.requestPlan(new IResponseReceived() {
+            @Override
+            public void onSuccess(String response) {
+                // TODO open new fragment with the connection
+                Log.i("SmartNav", response);
+            }
+
+            @Override
+            public void onError(String error) {
+                // TODO handle error
+                Log.e("SmartNav", error);
+            }
+        }, "8000105", date, hour);
     }
 
     @Override

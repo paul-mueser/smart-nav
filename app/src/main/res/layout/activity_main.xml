@@ -8,6 +8,8 @@
             android:layout_height="match_parent"
             tools:context=".MainActivity">
 
+        <!-- TODO maybe add a header -->
+
         <fragment
                 android:id="@+id/nav_host_fragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
