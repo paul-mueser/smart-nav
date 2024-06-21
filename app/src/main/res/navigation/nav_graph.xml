@@ -4,14 +4,14 @@
             xmlns:tools="http://schemas.android.com/tools" app:startDestination="@id/commonConnections">
 
     <fragment android:id="@+id/commonConnections"
-              android:name="com.paulmueser.smartnav.CommonConnections"
+              android:name="com.paulmueser.smartnav.frontend.CommonConnectionsFragment"
               android:label="common_connections"
               tools:layout="@layout/common_connections">
         <action android:id="@+id/action_commonConnections_to_findConnection" app:destination="@id/findConnection"/>
     </fragment>
 
     <fragment android:id="@+id/findConnection"
-              android:name="com.paulmueser.smartnav.FindConnection"
+              android:name="com.paulmueser.smartnav.frontend.FindConnectionFragment"
               android:label="find_connection"
               tools:layout="@layout/find_connection">
         <action android:id="@+id/action_findConnection_to_commonConnections" app:destination="@id/commonConnections"/>

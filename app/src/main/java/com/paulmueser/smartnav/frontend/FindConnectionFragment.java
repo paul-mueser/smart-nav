@@ -1,17 +1,18 @@
-package com.paulmueser.smartnav;
+package com.paulmueser.smartnav.frontend;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.paulmueser.smartnav.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CommonConnections#newInstance} factory method to
+ * Use the {@link FindConnectionFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CommonConnections extends Fragment {
+public class FindConnectionFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,7 +23,7 @@ public class CommonConnections extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CommonConnections() {
+    public FindConnectionFragment() {
         // Required empty public constructor
     }
 
@@ -32,12 +33,12 @@ public class CommonConnections extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CommonConnections.
+     * @return A new instance of fragment FindConnection.
      */
     // TODO: Rename and change types and number of parameters
-    public static CommonConnections newInstance(String param1, String param2) {
-        CommonConnections fragment = new CommonConnections();
-        Bundle            args     = new Bundle();
+    public static FindConnectionFragment newInstance(String param1, String param2) {
+        FindConnectionFragment fragment = new FindConnectionFragment();
+        Bundle                 args     = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
@@ -57,6 +58,6 @@ public class CommonConnections extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.common_connections, container, false);
+        return inflater.inflate(R.layout.find_connection, container, false);
     }
 }
