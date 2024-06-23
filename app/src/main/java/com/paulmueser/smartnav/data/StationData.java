@@ -1,34 +1,29 @@
 package com.paulmueser.smartnav.data;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
+@Root(strict = false, name = "station")
 public class StationData {
     /** DS100 station code. */
+    @Attribute(required = false)
     private String ds100;
 
     /** EVA station number. */
+    @Attribute(required = false)
     private Integer eva;
 
     /** List of meta stations. A sequence of station names separated by the pipe symbols ("|"). */
+    @Attribute(required = false)
     private String meta;
 
     /** Station name. */
+    @Attribute(required = false)
     private String name;
 
     /** List of platforms. A sequence of platforms separated by the pipe symbols ("|"). */
+    @Attribute(required = false)
     private String p;
-
-    public StationData(String ds100, Integer eva, String name) {
-        this.ds100 = ds100;
-        this.eva   = eva;
-        this.name  = name;
-    }
-
-    public StationData(String ds100, Integer eva, String meta, String name, String p) {
-        this.ds100 = ds100;
-        this.eva   = eva;
-        this.meta  = meta;
-        this.name  = name;
-        this.p     = p;
-    }
 
     // region Getters
     public String getDs100() {
@@ -51,4 +46,15 @@ public class StationData {
         return p;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "StationData{" +
+                "ds100='" + ds100 + '\'' +
+                ", eva=" + eva +
+                ", meta='" + meta + '\'' +
+                ", name='" + name + '\'' +
+                ", p='" + p + '\'' +
+                '}';
+    }
 }

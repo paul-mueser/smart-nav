@@ -1,11 +1,18 @@
 package com.paulmueser.smartnav.data;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
+@Root(strict = false, name = "rt")
 public class ReferenceTrip {
     /** The cancellation flag. True means, the reference trip is cancelled. */
+    @Attribute(required = false)
     private Boolean c;
 
     /** It's a compound data type that contains common data items that characterize
      * a reference trip stop. The contents is represented as a compact 4-tuple in XML. */
+    @Element(required = false)
     private ReferenceTripStopLabel ea;
 
     /** An id that uniquely identifies the reference trip. It consists of the following
@@ -15,23 +22,19 @@ public class ReferenceTrip {
      * the planned departure date of the referenced regular trip from its start station.
      * Example: '-7874571842864554321-1403311221' would be used for a trip with daily
      * trip id '-7874571842864554321' that starts on march the 31th 2014. */
+    @Attribute(required = false)
     private String id;
 
     /** It's a compound data type that contains common data items that characterize a
      * reference trip. The con-tents is represented as a compact 3-tuple in XML. */
-    private ReferenceTripLabel tl;
+    @Element(required = false)
+    private ReferenceTripLabel rtl;
 
     /** It's a compound data type that contains common data items that characterize
      * a reference trip stop. The contents is represented as a compact 4-tuple in XML. */
+    @Element(required = false)
     private ReferenceTripStopLabel sd;
 
-    public ReferenceTrip(Boolean c, ReferenceTripStopLabel ea, String id, ReferenceTripLabel tl, ReferenceTripStopLabel sd) {
-        this.c  = c;
-        this.ea = ea;
-        this.id = id;
-        this.tl = tl;
-        this.sd = sd;
-    }
 
     // region Getters
     public Boolean getC() {
@@ -46,12 +49,23 @@ public class ReferenceTrip {
         return id;
     }
 
-    public ReferenceTripLabel getTl() {
-        return tl;
+    public ReferenceTripLabel getRtl() {
+        return rtl;
     }
 
     public ReferenceTripStopLabel getSd() {
         return sd;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "ReferenceTrip{" +
+                "c=" + c +
+                ", ea=" + ea +
+                ", id='" + id + '\'' +
+                ", rtl=" + rtl +
+                ", sd=" + sd +
+                '}';
+    }
 }

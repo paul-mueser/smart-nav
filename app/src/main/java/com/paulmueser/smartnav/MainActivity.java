@@ -8,6 +8,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import com.paulmueser.smartnav.api.ApiService;
 import com.paulmueser.smartnav.api.IResponseReceived;
+import com.paulmueser.smartnav.data.MultipleStationData;
+import com.paulmueser.smartnav.data.Timetable;
 import com.paulmueser.smartnav.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,16 +27,18 @@ public class MainActivity extends AppCompatActivity {
 
     // TODO this is the way to call the request method
     private void request() {
-        ApiService.requestPlan(new IResponseReceived() {
+        ApiService.requestKnownChanges(new IResponseReceived() {
             @Override
             public void onSuccess(String response) {
                 Log.i("SmartNav", response);
+                Timetable t = Parser.parseTimetableStop(response);
+                Log.i("SmartNav", t + "");
             }
 
             @Override
             public void onError(String error) {
                 Log.e("SmartNav", error);
             }
-        }, "8000105", "240621", "22");
+        }, "8000105");
     }
 }

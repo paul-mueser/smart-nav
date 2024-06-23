@@ -1,24 +1,26 @@
 package com.paulmueser.smartnav.data;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
+@Root(strict = false, name = "ea")
 public class ReferenceTripStopLabel {
     /** The eva number of the correspondent stop of the regular trip. */
+    @Attribute(required = false)
     private Integer eva;
 
     /** The index of the correspondent stop of the regular trip. */
+    @Attribute(required = false)
     private Integer i;
 
     /** The (long) name of the correspondent stop of the regular trip. */
+    @Attribute(required = false)
     private String n;
 
     /** The planned time of the correspondent stop of the regular trip. */
+    @Attribute(required = false)
     private String pt;
 
-    public ReferenceTripStopLabel(Integer eva, Integer i, String n, String pt) {
-        this.eva = eva;
-        this.i   = i;
-        this.n   = n;
-        this.pt  = pt;
-    }
 
     // region Getters
     public Integer getEva() {
@@ -37,4 +39,14 @@ public class ReferenceTripStopLabel {
         return pt;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "ReferenceTripStopLabel{" +
+                "eva=" + eva +
+                ", i=" + i +
+                ", n='" + n + '\'' +
+                ", pt='" + pt + '\'' +
+                '}';
+    }
 }

@@ -1,37 +1,41 @@
 package com.paulmueser.smartnav.data;
 
-import java.util.ArrayList;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Root(strict = false, name = "timetable")
 public class Timetable {
     /** EVA station number. */
+    @Attribute(required = false)
     private Integer eva;
 
     /** List of Message. */
-    private ArrayList<Message> m;
+    @ElementList(required = false, inline = true)
+    private List<Message> m = new ArrayList<>();
 
     /** List of TimetableStop. */
-    private ArrayList<TimetableStop> s;
+    @ElementList(required = false, inline = true)
+    private List<TimetableStop> s = new ArrayList<>();
 
     /** Station name. */
+    @Attribute(required = false)
     private String station;
 
-    public Timetable(Integer eva, ArrayList<Message> m, ArrayList<TimetableStop> s, String station) {
-        this.eva     = eva;
-        this.m       = m;
-        this.s       = s;
-        this.station = station;
-    }
 
     // region Getters
     public Integer getEva() {
         return eva;
     }
 
-    public ArrayList<Message> getM() {
+    public List<Message> getM() {
         return m;
     }
 
-    public ArrayList<TimetableStop> getS() {
+    public List<TimetableStop> getS() {
         return s;
     }
 
@@ -39,4 +43,14 @@ public class Timetable {
         return station;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "Timetable{" +
+                "eva=" + eva +
+                ", m=" + m +
+                ", s=" + s +
+                ", station='" + station + '\'' +
+                '}';
+    }
 }

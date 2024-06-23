@@ -1,26 +1,26 @@
 package com.paulmueser.smartnav.data;
 
-import java.util.ArrayList;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Root(strict = false, name = "ref")
 public class TripReference {
     /** The referred trips reference trip elements. */
-    private ArrayList<TripLabel> rt;
+    @ElementList(required = false, inline = true)
+    private List<ReferredTripLabel> rt = new ArrayList<>();
 
     /** It's a compound data type that contains common data items that characterize
      * a Trip. The contents is represented as a compact 6-tuple in XML. */
+    @Element(required = false)
     private TripLabel tl;
 
-    public TripReference(TripLabel tl) {
-        this.tl = tl;
-    }
-
-    public TripReference(ArrayList<TripLabel> rt, TripLabel tl) {
-        this.rt = rt;
-        this.tl = tl;
-    }
 
     // region Getters
-    public ArrayList<TripLabel> getRt() {
+    public List<ReferredTripLabel> getRt() {
         return rt;
     }
 
@@ -28,4 +28,12 @@ public class TripReference {
         return tl;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "TripReference{" +
+                "rt=" + rt +
+                ", tl=" + tl +
+                '}';
+    }
 }

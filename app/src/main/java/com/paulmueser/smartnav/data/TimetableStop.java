@@ -1,25 +1,38 @@
 package com.paulmueser.smartnav.data;
 
-import java.util.ArrayList;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Root(strict = false, name = "s")
 public class TimetableStop {
     /** An event (arrival or departure) that is part of a stop. */
-    private EventArDp ar;
+    @Element(required = false)
+    private EventAr ar;
 
     /** Connection element. */
-    private ArrayList<Connection> conn;
+    @ElementList(required = false, inline = true)
+    private List<Connection> conn = new ArrayList<>();
 
     /** An event (arrival or departure) that is part of a stop. */
-    private EventArDp dp;
+    @Element(required = false)
+    private EventDp dp;
 
     /** The eva code of the station of this stop. Example '8000105' for Frankfurt(Main)Hbf. */
+    @Attribute(required = false)
     private Integer eva;
 
     /** Historic delay element. */
-    private ArrayList<HistoricDelay> hd;
+    @ElementList(required = false, inline = true)
+    private List<HistoricDelay> hd = new ArrayList<>();
 
     /** Historic platform change element. */
-    private ArrayList<HistoricPlatformChanges> hpc;
+    @ElementList(required = false, inline = true)
+    private List<HistoricPlatformChanges> hpc = new ArrayList<>();
 
     /** An id that uniquely identifies the stop. It consists of the following three elements
      * separated by dashes * a 'daily trip id' that uniquely identifies a trip within one day.
@@ -30,51 +43,37 @@ public class TimetableStop {
      * 100. Example '-7874571842864554321-1403311221-11' would be used for a trip with daily
      * trip id '-7874571842864554321' that starts on march the 31th 2014 and where the current
      * station is the 11th stop. */
+    @Attribute(required = false)
     private String id;
 
     /** Message element. */
-    private ArrayList<Message> m;
+    @ElementList(required = false, inline = true)
+    private List<Message> m = new ArrayList<>();
 
     /** It's a reference to another trip, which holds its label and reference trips, if available. */
+    @Element(required = false)
     private TripReference ref;
 
     /** Reference trip relation element. */
-    private ArrayList<ReferenceTripRelation> rtr;
+    @ElementList(required = false, inline = true)
+    private List<ReferenceTripRelation> rtr = new ArrayList<>();
 
     /** It's a compound data type that contains common data items that characterize a Trip.
      * The contents is represented as a compact 6-tuple in XML. */
+    @Element(required = false)
     private TripLabel tl;
 
 
-    public TimetableStop(Integer eva, String id) {
-        this.eva = eva;
-        this.id  = id;
-    }
-
-    public TimetableStop(EventArDp ar, ArrayList<Connection> conn, EventArDp dp, Integer eva, ArrayList<HistoricDelay> hd, ArrayList<HistoricPlatformChanges> hpc, String id, ArrayList<Message> m, TripReference ref, ArrayList<ReferenceTripRelation> rtr, TripLabel tl) {
-        this.ar   = ar;
-        this.conn = conn;
-        this.dp   = dp;
-        this.eva  = eva;
-        this.hd   = hd;
-        this.hpc  = hpc;
-        this.id   = id;
-        this.m    = m;
-        this.ref  = ref;
-        this.rtr  = rtr;
-        this.tl   = tl;
-    }
-
     // region Getters
-    public EventArDp getAr() {
+    public EventAr getAr() {
         return ar;
     }
 
-    public ArrayList<Connection> getConn() {
+    public List<Connection> getConn() {
         return conn;
     }
 
-    public EventArDp getDp() {
+    public EventDp getDp() {
         return dp;
     }
 
@@ -82,11 +81,11 @@ public class TimetableStop {
         return eva;
     }
 
-    public ArrayList<HistoricDelay> getHd() {
+    public List<HistoricDelay> getHd() {
         return hd;
     }
 
-    public ArrayList<HistoricPlatformChanges> getHpc() {
+    public List<HistoricPlatformChanges> getHpc() {
         return hpc;
     }
 
@@ -94,7 +93,7 @@ public class TimetableStop {
         return id;
     }
 
-    public ArrayList<Message> getM() {
+    public List<Message> getM() {
         return m;
     }
 
@@ -102,7 +101,7 @@ public class TimetableStop {
         return ref;
     }
 
-    public ArrayList<ReferenceTripRelation> getRtr() {
+    public List<ReferenceTripRelation> getRtr() {
         return rtr;
     }
 
@@ -110,4 +109,21 @@ public class TimetableStop {
         return tl;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "TimetableStop{" +
+                "ar=" + ar +
+                ", conn=" + conn +
+                ", dp=" + dp +
+                ", eva=" + eva +
+                ", hd=" + hd +
+                ", hpc=" + hpc +
+                ", id='" + id + '\'' +
+                ", m=" + m +
+                ", ref=" + ref +
+                ", rtr=" + rtr +
+                ", tl=" + tl +
+                '}';
+    }
 }

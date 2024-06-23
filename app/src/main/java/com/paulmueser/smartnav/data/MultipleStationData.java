@@ -1,18 +1,29 @@
 package com.paulmueser.smartnav.data;
 
-import java.util.ArrayList;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Root(name = "stations")
 public class MultipleStationData {
     /** List of stations with additional data. */
-    private ArrayList<StationData> stations;
+    @ElementList(name = "station", required = false, inline = true)
+    private List<StationData> stations = new ArrayList<>();
 
-    public MultipleStationData(ArrayList<StationData> stations) {
-        this.stations = stations;
-    }
 
     // region Getters
-    public ArrayList<StationData> getStations() {
+    public List<StationData> getStations() {
         return stations;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "MultipleStationData{" +
+                "stations=" + stations +
+                '}';
+    }
 }

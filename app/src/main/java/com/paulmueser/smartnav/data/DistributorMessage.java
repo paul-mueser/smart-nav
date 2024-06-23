@@ -1,25 +1,27 @@
 package com.paulmueser.smartnav.data;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
+@Root(strict = false, name = "dm")
 public class DistributorMessage {
     /** Internal text. */
+    @Attribute(name = "int")
     private String internal;
 
     /** Distributor name. */
+    @Attribute(required = false)
     private String n;
 
     /** Distributor type. * s - CITY * r - REGION * f - LONG DISTANCE * x - OTHER */
+    @Attribute(required = false)
     private DistributorType t;
 
     /** Timestamp. The time, in ten digit 'YYMMddHHmm' format,
      * e.g. '1404011437' for 14:37 on April the 1st of 2014. */
+    @Attribute(required = false)
     private String ts;
 
-    public DistributorMessage(String internal, String n, DistributorType t, String ts) {
-        this.internal = internal;
-        this.n        = n;
-        this.t        = t;
-        this.ts       = ts;
-    }
 
     // region Getters
     public String getInternal() {
@@ -38,4 +40,14 @@ public class DistributorMessage {
         return ts;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "DistributorMessage{" +
+                "internal='" + internal + '\'' +
+                ", n='" + n + '\'' +
+                ", t=" + t +
+                ", ts='" + ts + '\'' +
+                '}';
+    }
 }

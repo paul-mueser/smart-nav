@@ -1,34 +1,30 @@
 package com.paulmueser.smartnav.data;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
+@Root(strict = false, name = "tl")
 public class TripLabel {
     /** Category. Trip category, e.g. "ICE" or "RE". */
+    @Attribute(required = false)
     private String c;
 
     /** Filter flags. */
+    @Attribute(required = false)
     private String f;
 
     /** Trip/train number, e.g. "4523". */
+    @Attribute(required = false)
     private String n;
 
     /** Owner. A unique short-form and only intended to map a trip to specific evu. */
+    @Attribute(required = false)
     private String o;
 
     /** Trip type. */
+    @Attribute(required = false)
     private TripType t;
 
-    public TripLabel(String c, String n, String o) {
-        this.c = c;
-        this.n = n;
-        this.o = o;
-    }
-
-    public TripLabel(String c, String f, String n, String o, TripType t) {
-        this.c = c;
-        this.f = f;
-        this.n = n;
-        this.o = o;
-        this.t = t;
-    }
 
     // region Getters
     public String getC() {
@@ -51,4 +47,15 @@ public class TripLabel {
         return t;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "TripLabel{" +
+                "c='" + c + '\'' +
+                ", f='" + f + '\'' +
+                ", n='" + n + '\'' +
+                ", o='" + o + '\'' +
+                ", t=" + t +
+                '}';
+    }
 }

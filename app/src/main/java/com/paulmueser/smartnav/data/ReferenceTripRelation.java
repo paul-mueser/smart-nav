@@ -1,10 +1,16 @@
 package com.paulmueser.smartnav.data;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
+@Root(strict = false, name = "rtr")
 public class ReferenceTripRelation {
     /** A reference trip is another real trip, but it doesn't have
      * its own stops and events. It refers only to its ref-erenced
      * regular trip. The reference trip collects mainly all different
      * attributes of the referenced regular trip. */
+    @Element(required = false)
     private ReferenceTrip rt;
 
     /** The reference trips relation to the stop, which contains it. * b - BEFORE
@@ -13,12 +19,9 @@ public class ReferenceTripRelation {
      * end, in other words, the stop is contained within its travel path. * s - START
      * The reference trip starts at that stop. * a - AFTER The reference trip starts
      * after that stop. */
+    @Attribute(required = false)
     private ReferenceTripRelationToStop rts;
 
-    public ReferenceTripRelation(ReferenceTrip rt, ReferenceTripRelationToStop rts) {
-        this.rt  = rt;
-        this.rts = rts;
-    }
 
     // region Getters
     public ReferenceTrip getRt() {
@@ -29,4 +32,12 @@ public class ReferenceTripRelation {
         return rts;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "ReferenceTripRelation{" +
+                "rt=" + rt +
+                ", rts=" + rts +
+                '}';
+    }
 }

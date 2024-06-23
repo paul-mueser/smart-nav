@@ -1,16 +1,18 @@
 package com.paulmueser.smartnav.data;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
+@Root(strict = false, name = "rtl")
 public class ReferenceTripLabel {
     /** Category. Trip category, e.g. "ICE" or "RE". */
+    @Attribute(required = false)
     private String c;
 
     /** Trip/train number, e.g. "4523". */
+    @Attribute(required = false)
     private String n;
 
-    public ReferenceTripLabel(String c, String n) {
-        this.c = c;
-        this.n = n;
-    }
 
     // region Getters
     public String getC() {
@@ -21,4 +23,12 @@ public class ReferenceTripLabel {
         return n;
     }
     // endregion
+
+    @Override
+    public String toString() {
+        return "ReferenceTripLabel{" +
+                "c='" + c + '\'' +
+                ", n='" + n + '\'' +
+                '}';
+    }
 }
