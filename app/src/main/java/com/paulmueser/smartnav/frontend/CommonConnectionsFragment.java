@@ -38,7 +38,7 @@ public class CommonConnectionsFragment extends Fragment {
 
         recyclerViewCommonConnections = view.findViewById(R.id.list_common_connections);
         recyclerViewCommonConnections.setLayoutManager(new LinearLayoutManager(getContext()));
-        connectionAdapter = new ConnectionAdapter(tmp);
+        connectionAdapter = new ConnectionAdapter(getActivity(), tmp);
         recyclerViewCommonConnections.setAdapter(connectionAdapter);
 
         return view;

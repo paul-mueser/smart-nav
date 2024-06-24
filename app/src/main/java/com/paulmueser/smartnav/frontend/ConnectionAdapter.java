@@ -1,13 +1,22 @@
 package com.paulmueser.smartnav.frontend;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.paulmueser.smartnav.R;
 import com.paulmueser.smartnav.api.ApiService;
 import com.paulmueser.smartnav.api.IResponseReceived;
@@ -20,9 +29,11 @@ import java.util.*;
 public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.ViewHolder> {
     // TODO replace with connection class (create it)
     private final ArrayList<String> connectionList;
+    private static FragmentActivity activity;
 
-    public ConnectionAdapter(ArrayList<String> list) {
+    public ConnectionAdapter(FragmentActivity activity, ArrayList<String> list) {
         this.connectionList = list;
+        this.activity = activity;
     }
 
 
@@ -60,6 +71,29 @@ public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.Vi
             public void onSuccess(String response) {
                 // TODO open new fragment with the connection
                 Log.i("SmartNav", response);
+
+                // Open connection results fragment
+                activity.runOnUiThread(() -> {
+                    BottomNavigationView bottomNavigationView = view.getRootView().findViewById(R.id.bottom_navigation);
+                    bottomNavigationView.setSelectedItemId(R.id.connectionResultsFragment);
+                });
+
+                /*
+                // Create new fragment and transaction
+                Fragment newFragment = new ConnectionResultsFragment();
+                Bundle   args        = new Bundle();
+                args.putString("Response", response);
+                newFragment.setArguments(args);
+
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack
+                transaction.replace(R.id.commonConnections, newFragment);
+                transaction.addToBackStack(null);
+
+                // Commit the transaction
+                transaction.commit(); */
             }
 
             @Override

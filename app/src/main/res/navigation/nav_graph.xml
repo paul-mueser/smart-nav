@@ -8,6 +8,8 @@
               android:label="common_connections"
               tools:layout="@layout/common_connections">
         <action android:id="@+id/action_commonConnections_to_findConnection" app:destination="@id/findConnection"/>
+        <action android:id="@+id/action_commonConnections_to_connectionResultsFragment"
+                app:destination="@id/connectionResultsFragment"/>
     </fragment>
 
     <fragment android:id="@+id/findConnection"
@@ -15,5 +17,16 @@
               android:label="find_connection"
               tools:layout="@layout/find_connection">
         <action android:id="@+id/action_findConnection_to_commonConnections" app:destination="@id/commonConnections"/>
+        <action android:id="@+id/action_findConnection_to_connectionResultsFragment"
+                app:destination="@id/connectionResultsFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/connectionResultsFragment"
+              android:name="com.paulmueser.smartnav.frontend.ConnectionResultsFragment"
+              android:label="ConnectionResultsFragment">
+        <action android:id="@+id/action_connectionResultsFragment_to_commonConnections"
+                app:destination="@id/commonConnections"/>
+        <action android:id="@+id/action_connectionResultsFragment_to_findConnection"
+                app:destination="@id/findConnection"/>
     </fragment>
 </navigation>

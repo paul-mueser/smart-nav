@@ -7,21 +7,44 @@ import okhttp3.Response;
 
 public class ApiService {
 
-    public ApiService() {
-    }
-
+    /**
+     * Requests the known changes for a station
+     *
+     * @param listener the listener to be called when the response is received
+     * @param stationId the stations EVA number
+     */
     public static void requestKnownChanges(IResponseReceived listener, String stationId) {
         sendRequest(listener, "fchg/" + stationId);
     }
 
+    /**
+     * Requests the planned departures for a station at a given date and time
+     *
+     * @param listener the listener to be called when the response is received
+     * @param stationId the stations EVA number
+     * @param date the date in the format yyMMdd
+     * @param time the time in the format HH
+     */
     public static void requestPlan(IResponseReceived listener, String stationId, String date, String time) {
         sendRequest(listener, String.format("plan/%s/%s/%s", stationId, date, time));
     }
 
+    /**
+     * Requests a station with the given name/pattern
+     *
+     * @param listener the listener to be called when the response is received
+     * @param stationName the name or pattern of the station
+     */
     public static void requestStation(IResponseReceived listener, String stationName) {
         sendRequest(listener, "station/" + stationName);
     }
 
+    /**
+     * Sends a request to the DB API with the given url and calls the listener with the response
+     *
+     * @param listener the listener to be called when the response is received
+     * @param url the url to send the request to
+     */
     private static void sendRequest(IResponseReceived listener, String url) {
         new Thread(new Runnable() {
             @Override
