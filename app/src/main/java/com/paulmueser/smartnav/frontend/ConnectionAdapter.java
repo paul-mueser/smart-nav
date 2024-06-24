@@ -72,13 +72,6 @@ public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.Vi
                 // TODO open new fragment with the connection
                 Log.i("SmartNav", response);
 
-                // Open connection results fragment
-                activity.runOnUiThread(() -> {
-                    BottomNavigationView bottomNavigationView = view.getRootView().findViewById(R.id.bottom_navigation);
-                    bottomNavigationView.setSelectedItemId(R.id.connectionResultsFragment);
-                });
-
-                /*
                 // Create new fragment and transaction
                 Fragment newFragment = new ConnectionResultsFragment();
                 Bundle   args        = new Bundle();
@@ -89,11 +82,11 @@ public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.Vi
 
                 // Replace whatever is in the fragment_container view with this fragment,
                 // and add the transaction to the back stack
-                transaction.replace(R.id.commonConnections, newFragment);
+                transaction.replace(R.id.nav_host_fragment, newFragment);
                 transaction.addToBackStack(null);
 
                 // Commit the transaction
-                transaction.commit(); */
+                transaction.commit();
             }
 
             @Override
