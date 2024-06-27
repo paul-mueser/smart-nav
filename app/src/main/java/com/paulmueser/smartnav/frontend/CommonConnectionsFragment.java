@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 public class CommonConnectionsFragment extends Fragment {
 
-    private RecyclerView recyclerViewCommonConnections;
-    private ConnectionAdapter connectionAdapter;
+    private RecyclerView            recyclerViewCommonConnections;
+    private CommonConnectionAdapter commonConnectionAdapter;
 
     public CommonConnectionsFragment() {
         // Required empty public constructor
@@ -38,8 +38,8 @@ public class CommonConnectionsFragment extends Fragment {
 
         recyclerViewCommonConnections = view.findViewById(R.id.list_common_connections);
         recyclerViewCommonConnections.setLayoutManager(new LinearLayoutManager(getContext()));
-        connectionAdapter = new ConnectionAdapter(getActivity(), tmp);
-        recyclerViewCommonConnections.setAdapter(connectionAdapter);
+        commonConnectionAdapter = new CommonConnectionAdapter(getActivity(), tmp);
+        recyclerViewCommonConnections.setAdapter(commonConnectionAdapter);
 
         return view;
     }

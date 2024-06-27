@@ -8,30 +8,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.paulmueser.smartnav.R;
 import com.paulmueser.smartnav.api.ApiService;
 import com.paulmueser.smartnav.api.IResponseReceived;
 import org.jetbrains.annotations.NotNull;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class ConnectionAdapter extends RecyclerView.Adapter<ConnectionAdapter.ViewHolder> {
+public class CommonConnectionAdapter extends RecyclerView.Adapter<CommonConnectionAdapter.ViewHolder> {
     // TODO replace with connection class (create it)
     private final ArrayList<String> connectionList;
     private static FragmentActivity activity;
 
-    public ConnectionAdapter(FragmentActivity activity, ArrayList<String> list) {
+    public CommonConnectionAdapter(FragmentActivity activity, ArrayList<String> list) {
         this.connectionList = list;
         this.activity = activity;
     }
