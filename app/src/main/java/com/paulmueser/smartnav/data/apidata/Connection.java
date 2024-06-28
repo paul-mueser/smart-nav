@@ -5,7 +5,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "conn")
-public class Connection {
+public class Connection extends ApiData {
     /** Connection status. * w - WAITING This (regular) connection is waiting. * n - TRANSITION
      * This (regular) connection CANNOT wait. * a - ALTERNATIVE This is an alternative (unplanned)
      * connection that has been introduced as a replacement for one regular connection that cannot

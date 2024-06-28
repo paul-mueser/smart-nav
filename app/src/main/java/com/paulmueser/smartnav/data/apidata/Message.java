@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Root(strict = false, name = "m")
-public class Message {
+public class Message extends ApiData {
     /** Code. */
     @Attribute(required = false)
     private String c;

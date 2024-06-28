@@ -4,7 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "rtl")
-public class ReferenceTripLabel {
+public class ReferenceTripLabel extends ApiData {
     /** Category. Trip category, e.g. "ICE" or "RE". */
     @Attribute(required = false)
     private String c;

@@ -4,7 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "hd")
-public class HistoricDelay {
+public class HistoricDelay extends ApiData {
     /** The arrival event. The time, in ten digit 'YYMMddHHmm' format,
      * e.g. '1404011437' for 14:37 on April the 1st of 2014. */
     @Attribute(required = false)

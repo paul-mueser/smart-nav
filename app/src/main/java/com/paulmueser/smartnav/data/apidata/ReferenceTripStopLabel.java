@@ -4,7 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "ea")
-public class ReferenceTripStopLabel {
+public class ReferenceTripStopLabel extends ApiData {
     /** The eva number of the correspondent stop of the regular trip. */
     @Attribute(required = false)
     private Integer eva;

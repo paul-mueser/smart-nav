@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Root(name = "stations")
-public class MultipleStationData {
+public class MultipleStationData extends ApiData {
     /** List of stations with additional data. */
     @ElementList(name = "station", required = false, inline = true)
     private List<StationData> stations = new ArrayList<>();

@@ -5,7 +5,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "rtr")
-public class ReferenceTripRelation {
+public class ReferenceTripRelation extends ApiData {
     /** A reference trip is another real trip, but it doesn't have
      * its own stops and events. It refers only to its ref-erenced
      * regular trip. The reference trip collects mainly all different

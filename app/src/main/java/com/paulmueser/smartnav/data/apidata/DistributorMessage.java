@@ -4,7 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "dm")
-public class DistributorMessage {
+public class DistributorMessage extends ApiData {
     /** Internal text. */
     @Attribute(name = "int")
     private String internal;

@@ -5,7 +5,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "rt")
-public class ReferenceTrip {
+public class ReferenceTrip extends ApiData {
     /** The cancellation flag. True means, the reference trip is cancelled. */
     @Attribute(required = false)
     private Boolean c;

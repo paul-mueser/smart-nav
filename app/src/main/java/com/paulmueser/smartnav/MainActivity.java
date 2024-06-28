@@ -5,16 +5,10 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 import com.paulmueser.smartnav.api.ApiService;
 import com.paulmueser.smartnav.api.IResponseReceived;
-import com.paulmueser.smartnav.data.MultipleStationData;
-import com.paulmueser.smartnav.data.Timetable;
-import com.paulmueser.smartnav.databinding.ActivityMainBinding;
+import com.paulmueser.smartnav.data.apidata.Timetable;
 import com.paulmueser.smartnav.frontend.CommonConnectionsFragment;
-import com.paulmueser.smartnav.frontend.ConnectionResultsFragment;
 import com.paulmueser.smartnav.frontend.FindConnectionFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String response) {
                 Log.i("SmartNav", response);
-                Timetable t = Parser.parseTimetableStop(response);
+                Timetable t = (Timetable) Parser.parseTimetableStop(response, Timetable.class);
                 Log.i("SmartNav", t + "");
             }
 

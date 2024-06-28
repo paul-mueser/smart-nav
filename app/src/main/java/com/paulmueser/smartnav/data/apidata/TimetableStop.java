@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Root(strict = false, name = "s")
-public class TimetableStop {
+public class TimetableStop extends ApiData {
     /** An event (arrival or departure) that is part of a stop. */
     @Element(required = false)
     private EventAr ar;

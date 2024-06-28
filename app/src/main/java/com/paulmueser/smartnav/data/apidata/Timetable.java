@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Root(strict = false, name = "timetable")
-public class Timetable {
+public class Timetable extends ApiData {
     /** EVA station number. */
     @Attribute(required = false)
     private Integer eva;

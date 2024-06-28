@@ -1,17 +1,16 @@
 package com.paulmueser.smartnav;
 
 import android.util.Log;
-import com.paulmueser.smartnav.data.MultipleStationData;
-import com.paulmueser.smartnav.data.StationData;
-import com.paulmueser.smartnav.data.Timetable;
+import com.paulmueser.smartnav.data.apidata.ApiData;
+import com.paulmueser.smartnav.data.apidata.Timetable;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 public class Parser {
-    public static Timetable parseTimetableStop(String xmlData) {
+    public static ApiData parseTimetableStop(String xmlData, Class<? extends ApiData> apiDataClass) {
         Serializer serializer = new Persister();
         try {
-            return serializer.read(Timetable.class, xmlData);
+            return serializer.read(apiDataClass, xmlData);
         } catch (Exception e) {
             e.printStackTrace();
             Log.i("SmartNav", "Error parsing XML data\n" + e.getMessage());

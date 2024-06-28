@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Root(strict = false, name = "ref")
-public class TripReference {
+public class TripReference extends ApiData {
     /** The referred trips reference trip elements. */
     @ElementList(required = false, inline = true)
     private List<ReferredTripLabel> rt = new ArrayList<>();

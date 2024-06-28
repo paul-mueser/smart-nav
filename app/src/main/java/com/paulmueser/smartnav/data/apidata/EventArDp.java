@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Root(strict = false)
-public abstract class EventArDp {
+public abstract class EventArDp extends ApiData {
     /** Changed distant endpoint. */
     @Attribute(required = false)
     private String cde;

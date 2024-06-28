@@ -4,7 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "station")
-public class StationData {
+public class StationData extends ApiData {
     /** DS100 station code. */
     @Attribute(required = false)
     private String ds100;

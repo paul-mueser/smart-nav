@@ -4,7 +4,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "hpc")
-public class HistoricPlatformChanges {
+public class HistoricPlatformChanges extends ApiData {
     /** Arrival platform. */
     @Attribute(required = false)
     private String ar;
