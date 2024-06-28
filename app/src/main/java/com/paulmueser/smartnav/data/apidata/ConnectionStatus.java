@@ -1,4 +1,4 @@
-package com.paulmueser.smartnav.data;
+package com.paulmueser.smartnav.data.apidata;
 
 public enum ConnectionStatus {
     w, // WAITING This (regular) connection is waiting.

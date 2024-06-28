@@ -1,4 +1,4 @@
-package com.paulmueser.smartnav.data;
+package com.paulmueser.smartnav.data.apidata;
 
 public enum DelaySource {
     L, // LEIBIT LeiBit/LeiDis.

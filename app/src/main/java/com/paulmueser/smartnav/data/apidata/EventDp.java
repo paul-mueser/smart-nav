@@ -1,4 +1,4 @@
-package com.paulmueser.smartnav.data;
+package com.paulmueser.smartnav.data.apidata;
 
 import org.simpleframework.xml.Root;
 

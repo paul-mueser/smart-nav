@@ -1,4 +1,4 @@
-package com.paulmueser.smartnav.data;
+package com.paulmueser.smartnav.data.apidata;
 
 public enum ReferenceTripRelationToStop {
     b, // BEFORE The reference trip ends before that stop.

@@ -1,4 +1,4 @@
-package com.paulmueser.smartnav.data;
+package com.paulmueser.smartnav.data.apidata;
 
 public enum MessageType {
     h, // HIM A HIM message (generated through the Hafas Information Manager).

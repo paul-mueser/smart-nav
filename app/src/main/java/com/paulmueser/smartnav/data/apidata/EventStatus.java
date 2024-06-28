@@ -1,4 +1,4 @@
-package com.paulmueser.smartnav.data;
+package com.paulmueser.smartnav.data.apidata;
 
 public enum EventStatus {
     p, // PLANNED The event was planned. This status is also used when the cancellation of an event has been revoked.
