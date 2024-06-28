@@ -13,9 +13,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class ConnectionResultsAdapter extends RecyclerView.Adapter<ConnectionResultsAdapter.ViewHolder> {
+    private static FragmentActivity  activity;
     // TODO replace with connection class (create it)
-    private final ArrayList<String> connectionResultsList;
-    private static FragmentActivity activity;
+    private final  ArrayList<String> connectionResultsList;
 
     public ConnectionResultsAdapter(FragmentActivity activity, ArrayList<String> list) {
         this.connectionResultsList = list;
@@ -57,10 +57,10 @@ public class ConnectionResultsAdapter extends RecyclerView.Adapter<ConnectionRes
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtPlannedStartTime = itemView.findViewById(R.id.txt_con_res_planned_start_time);
-            txtPlannedEndTime = itemView.findViewById(R.id.txt_con_res_planned_end_time);
-            txtActualStartTime = itemView.findViewById(R.id.txt_con_res_actual_start_time);
-            txtActualEndTime = itemView.findViewById(R.id.txt_con_res_actual_end_time);
+            txtPlannedStartTime    = itemView.findViewById(R.id.txt_con_res_planned_start_time);
+            txtPlannedEndTime      = itemView.findViewById(R.id.txt_con_res_planned_end_time);
+            txtActualStartTime     = itemView.findViewById(R.id.txt_con_res_actual_start_time);
+            txtActualEndTime       = itemView.findViewById(R.id.txt_con_res_actual_end_time);
             txt_con_res_train_name = itemView.findViewById(R.id.txt_con_res_train_name);
         }
     }

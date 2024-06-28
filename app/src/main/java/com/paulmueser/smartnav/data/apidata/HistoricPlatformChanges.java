@@ -5,20 +5,28 @@ import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "hpc")
 public class HistoricPlatformChanges extends ApiData {
-    /** Arrival platform. */
+    /**
+     * Arrival platform.
+     */
     @Attribute(required = false)
     private String ar;
 
-    /** Detailed cause of track change. */
+    /**
+     * Detailed cause of track change.
+     */
     @Attribute(required = false)
     private String cot;
 
-    /** Departure platform. */
+    /**
+     * Departure platform.
+     */
     @Attribute(required = false)
     private String dp;
 
-    /** Timestamp. The time, in ten digit 'YYMMddHHmm' format,
-     * e.g. '1404011437' for 14:37 on April the 1st of 2014. */
+    /**
+     * Timestamp. The time, in ten digit 'YYMMddHHmm' format,
+     * e.g. '1404011437' for 14:37 on April the 1st of 2014.
+     */
     @Attribute(required = false)
     private String ts;
 

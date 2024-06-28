@@ -5,23 +5,33 @@ import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "station")
 public class StationData extends ApiData {
-    /** DS100 station code. */
+    /**
+     * DS100 station code.
+     */
     @Attribute(required = false)
     private String ds100;
 
-    /** EVA station number. */
+    /**
+     * EVA station number.
+     */
     @Attribute(required = false)
     private Integer eva;
 
-    /** List of meta stations. A sequence of station names separated by the pipe symbols ("|"). */
+    /**
+     * List of meta stations. A sequence of station names separated by the pipe symbols ("|").
+     */
     @Attribute(required = false)
     private String meta;
 
-    /** Station name. */
+    /**
+     * Station name.
+     */
     @Attribute(required = false)
     private String name;
 
-    /** List of platforms. A sequence of platforms separated by the pipe symbols ("|"). */
+    /**
+     * List of platforms. A sequence of platforms separated by the pipe symbols ("|").
+     */
     @Attribute(required = false)
     private String p;
 

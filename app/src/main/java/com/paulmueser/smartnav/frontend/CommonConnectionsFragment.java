@@ -1,13 +1,14 @@
 package com.paulmueser.smartnav.frontend;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.paulmueser.smartnav.R;
+import com.paulmueser.smartnav.data.SearchParameterData;
 import com.paulmueser.smartnav.databinding.CommonConnectionsBinding;
 
 import java.util.ArrayList;
@@ -32,9 +33,8 @@ public class CommonConnectionsFragment extends Fragment {
         CommonConnectionsBinding binding = CommonConnectionsBinding.inflate(inflater, container, false);
         View                     view    = binding.getRoot();
 
-        ArrayList<String> tmp = new ArrayList<>();
-        tmp.add("Connection 1");
-        tmp.add("Connection 2");
+        ArrayList<SearchParameterData> tmp = new ArrayList<>();
+        tmp.add(new SearchParameterData("8000105", "TmpTest", "", null, "", "", true));
 
         recyclerViewCommonConnections = view.findViewById(R.id.list_common_connections);
         recyclerViewCommonConnections.setLayoutManager(new LinearLayoutManager(getContext()));

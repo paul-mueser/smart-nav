@@ -9,76 +9,108 @@ import java.util.List;
 
 @Root(strict = false, name = "m")
 public class Message extends ApiData {
-    /** Code. */
+    /**
+     * Code.
+     */
     @Attribute(required = false)
     private String c;
 
-    /** Category. */
+    /**
+     * Category.
+     */
     @Attribute(required = false)
     private String cat;
 
-    /** Deleted. */
+    /**
+     * Deleted.
+     */
     @Attribute(required = false)
     private Integer del;
 
-    /** Distributor message. */
+    /**
+     * Distributor message.
+     */
     @ElementList(required = false, inline = true)
     private List<DistributorMessage> dm = new ArrayList<>();
 
-    /** External category. */
+    /**
+     * External category.
+     */
     @Attribute(required = false)
     private String ec;
 
-    /** External link associated with the message. */
+    /**
+     * External link associated with the message.
+     */
     @Attribute(required = false)
     private String elnk;
 
-    /** External text. */
+    /**
+     * External text.
+     */
     @Attribute(required = false)
     private String ext;
 
-    /** Valid from. The time, in ten digit 'YYMMddHHmm' format,
-     * e.g. '1404011437' for 14:37 on April the 1st of 2014. */
+    /**
+     * Valid from. The time, in ten digit 'YYMMddHHmm' format,
+     * e.g. '1404011437' for 14:37 on April the 1st of 2014.
+     */
     @Attribute(required = false)
     private String from;
 
-    /** Message id. */
+    /**
+     * Message id.
+     */
     @Attribute(required = false)
     private String id;
 
-    /** Internal text. */
+    /**
+     * Internal text.
+     */
     @Attribute(name = "int", required = false)
     private String internal;
 
-    /** Owner. */
+    /**
+     * Owner.
+     */
     @Attribute(required = false)
     private String o;
 
-    /** Priority. * 1 - HIGH * 2 - MEDIUM * 3 - LOW * 4 - DONE */
+    /**
+     * Priority. * 1 - HIGH * 2 - MEDIUM * 3 - LOW * 4 - DONE
+     */
     @Attribute(required = false)
     private String pr;
 
-    /** Message status * h - HIM A HIM message (generated through the Hafas
+    /**
+     * Message status * h - HIM A HIM message (generated through the Hafas
      * Information Manager). * q - QUALITY CHANGE A message about a quality
      * change. * f - FREE A free text message. * d - CAUSE OF DELAY A message
      * about the cause of a delay. * i - IBIS An IBIS message (generated from
      * IRIS-AP). * u - UNASSIGNED IBIS MESSAGE An IBIS message (generated from
      * IRIS-AP) not yet assigned to a train. * r - DISRUPTION A major
-     * disruption. * c - CONNECTION A connection. */
+     * disruption. * c - CONNECTION A connection.
+     */
     @Attribute(required = false)
     private MessageType t;
 
-    /** Trip label. */
+    /**
+     * Trip label.
+     */
     @ElementList(required = false, inline = true)
     private List<TripLabel> tl = new ArrayList<>();
 
-    /** Valid to. The time, in ten digit 'YYMMddHHmm' format,
-     * e.g. '1404011437' for 14:37 on April the 1st of 2014. */
+    /**
+     * Valid to. The time, in ten digit 'YYMMddHHmm' format,
+     * e.g. '1404011437' for 14:37 on April the 1st of 2014.
+     */
     @Attribute(required = false)
     private String to;
 
-    /** Timestamp. The time, in ten digit 'YYMMddHHmm' format,
-     * e.g. "1404011437" for 14:37 on April the 1st of 2014. */
+    /**
+     * Timestamp. The time, in ten digit 'YYMMddHHmm' format,
+     * e.g. "1404011437" for 14:37 on April the 1st of 2014.
+     */
     @Attribute(required = false)
     private String ts;
 

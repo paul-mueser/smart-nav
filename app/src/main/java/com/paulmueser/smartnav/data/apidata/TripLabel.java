@@ -5,23 +5,33 @@ import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "tl")
 public class TripLabel extends ApiData {
-    /** Category. Trip category, e.g. "ICE" or "RE". */
+    /**
+     * Category. Trip category, e.g. "ICE" or "RE".
+     */
     @Attribute(required = false)
     private String c;
 
-    /** Filter flags. */
+    /**
+     * Filter flags.
+     */
     @Attribute(required = false)
     private String f;
 
-    /** Trip/train number, e.g. "4523". */
+    /**
+     * Trip/train number, e.g. "4523".
+     */
     @Attribute(required = false)
     private String n;
 
-    /** Owner. A unique short-form and only intended to map a trip to specific evu. */
+    /**
+     * Owner. A unique short-form and only intended to map a trip to specific evu.
+     */
     @Attribute(required = false)
     private String o;
 
-    /** Trip type. */
+    /**
+     * Trip type.
+     */
     @Attribute(required = false)
     private TripType t;
 

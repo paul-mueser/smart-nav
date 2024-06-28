@@ -9,12 +9,16 @@ import java.util.List;
 
 @Root(strict = false, name = "ref")
 public class TripReference extends ApiData {
-    /** The referred trips reference trip elements. */
+    /**
+     * The referred trips reference trip elements.
+     */
     @ElementList(required = false, inline = true)
     private List<ReferredTripLabel> rt = new ArrayList<>();
 
-    /** It's a compound data type that contains common data items that characterize
-     * a Trip. The contents is represented as a compact 6-tuple in XML. */
+    /**
+     * It's a compound data type that contains common data items that characterize
+     * a Trip. The contents is represented as a compact 6-tuple in XML.
+     */
     @Element(required = false)
     private TripLabel tl;
 

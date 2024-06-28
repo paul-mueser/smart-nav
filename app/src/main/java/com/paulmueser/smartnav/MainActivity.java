@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.paulmueser.smartnav.api.ApiService;
 import com.paulmueser.smartnav.api.IResponseReceived;
+import com.paulmueser.smartnav.data.Parser;
 import com.paulmueser.smartnav.data.apidata.Timetable;
 import com.paulmueser.smartnav.frontend.CommonConnectionsFragment;
 import com.paulmueser.smartnav.frontend.FindConnectionFragment;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set up the bottom navigation bar
         findViewById(R.id.nav_btn_common_connections).setOnClickListener(v -> {
-            Fragment f = new CommonConnectionsFragment();
+            Fragment            f = new CommonConnectionsFragment();
             FragmentTransaction t = getSupportFragmentManager().beginTransaction();
             t.replace(R.id.nav_host_fragment, f);
             t.addToBackStack(null);
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.nav_btn_find_connection).setOnClickListener(v -> {
-            Fragment f = new FindConnectionFragment();
+            Fragment            f = new FindConnectionFragment();
             FragmentTransaction t = getSupportFragmentManager().beginTransaction();
             t.replace(R.id.nav_host_fragment, f);
             t.addToBackStack(null);

@@ -5,20 +5,28 @@ import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "dm")
 public class DistributorMessage extends ApiData {
-    /** Internal text. */
+    /**
+     * Internal text.
+     */
     @Attribute(name = "int")
     private String internal;
 
-    /** Distributor name. */
+    /**
+     * Distributor name.
+     */
     @Attribute(required = false)
     private String n;
 
-    /** Distributor type. * s - CITY * r - REGION * f - LONG DISTANCE * x - OTHER */
+    /**
+     * Distributor type. * s - CITY * r - REGION * f - LONG DISTANCE * x - OTHER
+     */
     @Attribute(required = false)
     private DistributorType t;
 
-    /** Timestamp. The time, in ten digit 'YYMMddHHmm' format,
-     * e.g. '1404011437' for 14:37 on April the 1st of 2014. */
+    /**
+     * Timestamp. The time, in ten digit 'YYMMddHHmm' format,
+     * e.g. '1404011437' for 14:37 on April the 1st of 2014.
+     */
     @Attribute(required = false)
     private String ts;
 

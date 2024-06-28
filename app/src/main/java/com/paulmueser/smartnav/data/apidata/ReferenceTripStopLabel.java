@@ -5,19 +5,27 @@ import org.simpleframework.xml.Root;
 
 @Root(strict = false, name = "ea")
 public class ReferenceTripStopLabel extends ApiData {
-    /** The eva number of the correspondent stop of the regular trip. */
+    /**
+     * The eva number of the correspondent stop of the regular trip.
+     */
     @Attribute(required = false)
     private Integer eva;
 
-    /** The index of the correspondent stop of the regular trip. */
+    /**
+     * The index of the correspondent stop of the regular trip.
+     */
     @Attribute(required = false)
     private Integer i;
 
-    /** The (long) name of the correspondent stop of the regular trip. */
+    /**
+     * The (long) name of the correspondent stop of the regular trip.
+     */
     @Attribute(required = false)
     private String n;
 
-    /** The planned time of the correspondent stop of the regular trip. */
+    /**
+     * The planned time of the correspondent stop of the regular trip.
+     */
     @Attribute(required = false)
     private String pt;
 

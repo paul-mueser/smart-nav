@@ -1,12 +1,12 @@
 package com.paulmueser.smartnav.frontend;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -15,21 +15,69 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.paulmueser.smartnav.R;
 import com.paulmueser.smartnav.api.ApiService;
 import com.paulmueser.smartnav.api.IResponseReceived;
+import com.paulmueser.smartnav.data.Parser;
+import com.paulmueser.smartnav.data.SearchParameterData;
+import com.paulmueser.smartnav.data.apidata.Timetable;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class CommonConnectionAdapter extends RecyclerView.Adapter<CommonConnectionAdapter.ViewHolder> {
+    private static FragmentActivity               activity;
     // TODO replace with connection class (create it)
-    private final ArrayList<String> connectionList;
-    private static FragmentActivity activity;
+    private final  ArrayList<SearchParameterData> connectionList;
 
-    public CommonConnectionAdapter(FragmentActivity activity, ArrayList<String> list) {
+    public CommonConnectionAdapter(FragmentActivity activity, ArrayList<SearchParameterData> list) {
         this.connectionList = list;
-        this.activity = activity;
+        this.activity       = activity;
     }
 
+    private static void RequestConnection(View view, SearchParameterData data) {
+        // region Get current date and time
+        Date currentTime = Calendar.getInstance().getTime();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd", Locale.getDefault());
+        String           date       = dateFormat.format(currentTime);
+
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH", Locale.getDefault());
+        String           hour       = timeFormat.format(currentTime);
+        // endregion
+
+        Bundle   args        = new Bundle();
+        args.putBoolean("IsDirect", data.isDirectConnection());
+
+        if (data.isDirectConnection()) {
+            // TODO rework when implementing indirect connections
+
+            ApiService.requestPlan(new IResponseReceived() {
+                @Override
+                public void onSuccess(String response) {
+                    Timetable t = (Timetable) Parser.parseTimetableStop(response, Timetable.class);
+
+                    Fragment newFragment = new ConnectionResultsFragment();
+                    args.putString("Response", response);
+                    newFragment.setArguments(args);
+                    FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.nav_host_fragment, newFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+
+                @Override
+                public void onError(String error) {
+                    // TODO handle error
+                    Log.e("SmartNav", error);
+                    Toast.makeText(view.getContext(), "Error: " + error, Toast.LENGTH_LONG).show();
+                }
+            }, data.getRouteStartEvaNr(), date, hour);
+        } else {
+            // TODO handle indirect connection
+        }
+    }
 
     @NotNull
     @Override
@@ -40,55 +88,11 @@ public class CommonConnectionAdapter extends RecyclerView.Adapter<CommonConnecti
 
     @Override
     public void onBindViewHolder(@NotNull ViewHolder holder, int position) {
-        String curConnection = connectionList.get(position);
+        SearchParameterData data = connectionList.get(position);
 
-        holder.title.setText(curConnection);
+        holder.title.setText(data.getRouteStartName());
 
-        holder.title.setOnClickListener(view -> RequestConnection(view, curConnection));
-    }
-
-    private static void RequestConnection(View view, String curConnection) {
-        Context context = view.getContext();
-
-        // region Get current date and time
-        Date currentTime = Calendar.getInstance().getTime();
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd", Locale.getDefault());
-        String date = dateFormat.format(currentTime);
-
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH", Locale.getDefault());
-        String hour = timeFormat.format(currentTime);
-        // endregion
-
-        ApiService.requestPlan(new IResponseReceived() {
-            @Override
-            public void onSuccess(String response) {
-                // TODO open new fragment with the connection
-                Log.i("SmartNav", response);
-
-                // Create new fragment and transaction
-                Fragment newFragment = new ConnectionResultsFragment();
-                Bundle   args        = new Bundle();
-                args.putString("Response", response);
-                newFragment.setArguments(args);
-
-                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack
-                transaction.replace(R.id.nav_host_fragment, newFragment);
-                transaction.addToBackStack(null);
-
-                // Commit the transaction
-                transaction.commit();
-            }
-
-            @Override
-            public void onError(String error) {
-                // TODO handle error
-                Log.e("SmartNav", error);
-            }
-        }, "8000105", date, hour);
+        holder.title.setOnClickListener(view -> RequestConnection(view, data));
     }
 
     @Override
@@ -99,7 +103,7 @@ public class CommonConnectionAdapter extends RecyclerView.Adapter<CommonConnecti
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         //declaring the views
-        private final TextView  title;
+        private final TextView title;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

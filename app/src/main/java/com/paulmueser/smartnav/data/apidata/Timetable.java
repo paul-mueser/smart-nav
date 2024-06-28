@@ -9,19 +9,27 @@ import java.util.List;
 
 @Root(strict = false, name = "timetable")
 public class Timetable extends ApiData {
-    /** EVA station number. */
+    /**
+     * EVA station number.
+     */
     @Attribute(required = false)
     private Integer eva;
 
-    /** List of Message. */
+    /**
+     * List of Message.
+     */
     @ElementList(required = false, inline = true)
     private List<Message> m = new ArrayList<>();
 
-    /** List of TimetableStop. */
+    /**
+     * List of TimetableStop.
+     */
     @ElementList(required = false, inline = true)
     private List<TimetableStop> s = new ArrayList<>();
 
-    /** Station name. */
+    /**
+     * Station name.
+     */
     @Attribute(required = false)
     private String station;
 

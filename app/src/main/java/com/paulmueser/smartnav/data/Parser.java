@@ -1,8 +1,7 @@
-package com.paulmueser.smartnav;
+package com.paulmueser.smartnav.data;
 
 import android.util.Log;
 import com.paulmueser.smartnav.data.apidata.ApiData;
-import com.paulmueser.smartnav.data.apidata.Timetable;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
